@@ -57,17 +57,17 @@ mkdir $DESTINATION
 cd $DESTINATION
 
 if [ ! -e "README_traindata" ]; then
-	wget "https://lmb.informatik.uni-freiburg.de/data/demon/traindata/README_traindata"
+	wget "https://lmb.informatik.uni-freiburg.de/data/demon/traindata/README_traindata" --no-check-certificate
 fi
 if [ ! -e "traindata.md5" ]; then
-	wget "https://lmb.informatik.uni-freiburg.de/data/demon/traindata/traindata.md5"
+	wget "https://lmb.informatik.uni-freiburg.de/data/demon/traindata/traindata.md5" --no-check-certificate
 fi
 
 for ds in ${datasets[@]}; do
 	if [ -e "${ds}_train.h5" ]; then
 		echo "${ds}_train.h5 already exists, skipping ${ds}"
 	else
-		wget "https://lmb.informatik.uni-freiburg.de/data/demon/traindata/${ds}_train.tgz"
+		wget "https://lmb.informatik.uni-freiburg.de/data/demon/traindata/${ds}_train.tgz" --no-check-certificate
 		tar -xvf "${ds}_train.tgz"
 	fi
 done
